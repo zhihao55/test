@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue2.js,计算属性与侦听</title>
+		<script src="vue.js">	
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			{{mag}}
+			<hr >
+			<p>{{msg1}}</p>
+		</div>
+		<hr >
+		<div class="xx">
+			<!-- 循环输出 -->
+			<!-- 点击使cout的值加1 -->
+			<button type="button"v-on:click="cout += 1">按钮加1</button>
+			<p>{{cout}}</p>
+			<!-- v-if用来判断 -->
+			<div v-for="ii in list" v-if="cout>5">
+				{{ii.name}}{{ii.age}}
+			</div>
+			<ul>
+				<li v-for="ii in list">
+					{{ii.name}}{{ii.age}}
+				</li>
+				<!-- class 与 style 是 HTML 元素的属性，用于设置元素的样式，我们可以用 v-bind 来设置样式属性。 -->
+				<p v-bind:style="xxx">我是你帕比</p>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var vue=new Vue({
+				el:'#app',
+				data:{
+					mag:'hellow vue',
+					test:'this is two'
+				},
+				//侦听器
+				//watch(可以异步场景)
+				watch:{
+					//第一个参数是新的值,第二个参数是旧的值
+					mag:function(newss,older){
+						console.log('新的值:'+newss)
+						console.log('旧的值:'+older)
+					}
+				},
+				//计算属性
+				//computed(数据联动)
+				computed:{
+					msg1:function(){
+						//'this'指向vm实例
+						return 'computed：'+this.mag+'第二个值:'+this.test
+					}
+				}
+			})
+			var aa=new Vue({
+				el:'.xx',
+				data:{
+					//定义一个数组
+					cout: 0,
+					xxx:{
+						color:'red',
+						//如果是有-的话,要用单引号引起来
+						// 'font-size': '80px',
+						// 也可以使用驼峰的写法
+						fontSize:'80px'
+					},
+					list:[
+						{
+						name: '王志毫',
+						age: '18'
+					},
+					{
+						name: '爸爸',
+						age: '25'
+					}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

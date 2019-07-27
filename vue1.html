@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue学习1</title>
+		<script src="vue.js">	
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			{{mes}}
+	<!-- v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素。 -->
+			<p v-if="seen">{{mes}}</p>
+	<!-- v-html 指令用于输出 html 代码： -->
+			<div id="" v-html="aa">
+				
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化vue
+			var vue=new Vue({
+				//绑定class或ip的节点
+				el:'#app',
+				//绑定数据,渲染
+				data:{
+					mes:'我是你爸爸',
+					aa:'<h1>我是你大爸爸</h1><p>我是那你特特</p>',
+					seen:false,
+				}
+			})
+		</script>
+	</body>
+</html>

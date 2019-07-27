@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js">
+			
+		</script>
+		 
+	</head>
+	<body>
+		<!-- <div id="app">
+				{{ messages }}
+		</div> -->
+		<div id="app-2">
+		  <span v-bind:title="message">
+			鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		  </span>
+		</div>
+		<div id="app">
+			<p>{{ message }}</p>
+			<input type="text" v-model="message"/>
+		</div>
+		<script type="text/javascript">
+			// 	var app = new Vue({
+			// 		el: '#app',
+			// data: {
+			// 	messages: 'Hello Vue!'
+			// 	}
+			// })
+			// var app2 = new Vue({
+			//   el: '#app-2',
+			//   data: {
+			// 	message: '页面加载于 ' + new Date().toLocaleString()
+			//   }
+			// })
+			var exampleData = {
+            message: 'Hello World!'
+			}
+
+        // 创建一个 Vue 实例或 "ViewModel"
+        // 它连接 View 与 Model
+			new Vue({
+				el: '#app',
+				data: exampleData
+			})
+		</script>
+	</body>
+</html>
