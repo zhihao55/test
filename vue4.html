@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>跑马灯</title>
+		<script src="vue.js">		
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{msg}}</h2>
+			<!-- v-on事件绑定 -->
+			<input type="submit" value="浪起来" v-on:click="aa" />
+			<input type="submit" src="不要脸" v-on:click="bb"/>
+		</div>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					msg:'除了长的帅，一无所用',
+					timess: null
+				},
+				methods:{
+					aa:function(){
+						//setInterval函数，this是指向了window对象,所以要提前保存
+						// var _this=this
+						// 也可以通过改造让this指向外面
+						// 例如:setInterval(function(){},200);变成setInterval(()=>{},200);
+						if(this.timess !=null){
+							return;
+						}
+						this.timess=setInterval(()=>{
+							//setInterval函数，this是指向了window对象,所以要提前保存
+							console.log(this.msg);
+							var start = this.msg.substring(0,1);
+							var end =this.msg.substring(1);
+							this.msg=end+start;
+							},400)
+						// console.log(this.msg);
+						// //截取第一个字符串
+						// var start = this.msg.substring(0,1);
+						// //截取剩下的字符串
+						// 
+						// var end =this.msg.substring(1);
+						// //重新拼接得到新的字符串
+						// this.msg=end+start;
+						// //加一个定时器
+						
+					},
+					bb:function(){
+						clearInterval(this.timess);
+						this.timess=null;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

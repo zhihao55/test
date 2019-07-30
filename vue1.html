@@ -5,16 +5,28 @@
 		<title>vue学习1</title>
 		<script src="vue.js">	
 		</script>
+		<style type="text/css">
+			[v-cloak]{
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="app">
 			{{mes}}
 	<!-- v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素。 -->
-			<p v-if="seen">{{mes}}</p>
-	<!-- v-html 指令用于输出 html 代码： -->
+	<!-- 		v-cloak能够有效的解决网页加载时，出现没有渲染到位的问题 -->
+			<p v-if="seen" v-cloak>{{mes}}</p>
+	<!-- v-text 没有出现闪烁 -->
+			<h4 v-text="mes"></h4>
+				<!-- v-html 指令用于输出 html 代码： -->
 			<div id="" v-html="aa">
 				
 			</div>
+			<!-- v-bing:是vue中，提供的同于绑定属性的指令 -->
+			<input type="submit" value="按钮" v-bind:title="mytite" />
+			<!-- 	v-on:事件绑定机制 -->
+			<input type="submit" value="点我啊有惊喜" v-on:dblclick="show"/>
 		</div>
 		<script type="text/javascript">
 			//实例化vue
@@ -26,6 +38,12 @@
 					mes:'我是你爸爸',
 					aa:'<h1>我是你大爸爸</h1><p>我是那你特特</p>',
 					seen:false,
+					mytite:'我是你baba'
+				},
+				methods:{
+					show:function (){
+						alert("我呀")
+					}
 				}
 			})
 		</script>
