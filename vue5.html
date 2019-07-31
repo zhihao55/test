@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js">		
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<h4>{{mag}}</h4>
+			<!-- v-bind 只能实现数据的单绑定，从m自动绑定到v,无法实现数据双绑定 -->
+			<!-- 例如往下： -->
+			<input type="text" v-bind:value="mag" />
+			
+			<hr />
+			<!-- 	v-model 能够实现数据的双绑定 -->
+			<!-- 	只能运用到表单元素 -->
+			<!-- 	例如往下 -->
+			<input type="text" v-model:value="mag" />
+		</div>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					mag:'我是你爸爸'
+				},
+				methods:{
+					
+				}
+			})
+		</script>
+	</body>
+</html>

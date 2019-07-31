@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>请求</title>
+		<script src="vue.js"></script>
+		<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="submit" value="提交" v-on:click="aa()" />
+		</div>
+		<script type="text/javascript">
+			vm=new Vue({
+				el:'#app',
+				data:{
+					
+				},
+				methods:{
+					aa:function(){
+						this.$http.get('https://www.zhihao1.cn/api.php/provide/vod/?ac=list').then(function(result){
+							console.log(result);
+					},function(){
+                console.log('请求失败处理');
+					});
+				}
+				}
+			})
+		</script>
+	</body>
+</html>

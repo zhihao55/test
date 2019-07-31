@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>过滤器的基本使用</title>
+		<script src="vue.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 可以传递多个过滤器 -->
+			<p>{{msg|msgform|test}}</p>
+		</div>
+		<script type="text/javascript">
+			// 定义一个全局的过滤器,可以用于用户非法输入不良的语句
+			Vue.filter('msgform',function(msg){
+				// 字符串的 replace 方法,第一个参数可以传字符串,还可以用正则,第二个参数为要替换的东西
+				// g为全局
+				return msg.replace(/卧槽/g,'***')
+			}),
+			Vue.filter('test',function(msg){
+				// return msg+'============'
+				return msg.replace(/我/g,'你')+'==========='
+			})
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					msg:'卧槽，我除了长的帅一无所用，跟一个废物一点,卧槽'
+				},
+				methods:{
+					
+				},
+				//定义一个私有的过滤器,过滤器有两个条件[过滤名称和处理函数]
+				// filters:{
+				// 	msgform:function(msg){
+				// 		return msg.replace(/我/g,'你')
+				// 	}
+				// }
+			})
+		</script>
+	</body>
+</html>
