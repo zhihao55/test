@@ -7,24 +7,24 @@
 		<style>
 			/* v-enter[这是一个时间点]是进入之前,元素的起始状态,此时还没有开始进入 */
 			/* v-leave-to 是动画离开之后,离开的终止的状态,此时,元素,动画已经结束了 */
-			/* .v-enter,
+			.v-enter,
 			.v-leave-to{
 				opacity: 0;
 				transform: translateX(200px);
-			} */
+			}
 			/* v-enter-active 入场动画的时间段 */
 			/* v-leave-active 离场动画的时间断段 */
-			/* .v-enter-active,
+			.v-enter-active,
 			.v-leave-active{
 				transition: all 0.8s ease;
-			} */
+			}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/animate.css"/>
 	</head>
 	<body>
 		<div id="app">
 			<input type="submit" value="开" v-on:click="flag=!flag" />
-			<transition enter-active-class="bouncelnLeft" leave-active-class="flipOutX">
+			<transition>
 				<h1 v-show="flag" class="animated">我是你爸爸</h1>
 			</transition>
 			
