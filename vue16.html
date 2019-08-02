@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>组件传值</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<mycom1 v-bind:parentmsg="msg"></mycom1>
+		</div>
+		<script type="text/javascript">
+			// Vue.component('mycom1',{
+			// 	template:'<h1>这是字组件的啦啦啦----</h1>'
+			// })
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					msg:'我是父组件的数据啦啦啦',
+				},
+				methods:{
+					
+				},
+				components:{
+					mycom1:{
+						data:(){//注意:子组件中的data数据,并不是通过父组件传递过来的
+						//注意:组件中的所有props中数据,都是通过父组件传递子组件
+						//props中的数据,都是只读的,无法重新赋值
+						// title:'学习vue的第四天',
+							return{
+								title:'学习vue的第三天',
+								msg:'对'
+							}
+						},
+						//结论:经过演示,发现,子组件中,默认无法访问到 父组件中的data数据
+						//				  到methods
+						template:'<h1>这是子组件----{{parentmsg}}</h1>',
+						//注意:组件中的 所有props中的数据,都是通过父组件传递给子组件的
+						//props中的数据,都是只读的,无法重新赋值
+						props:['parentmsg'],//把父组件传递过来的parentmsg属性,先把props数组
+						//中,定义一下,这样,才能使用这个数据
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
