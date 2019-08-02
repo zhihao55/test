@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>使用ref获取dom元素的和组件</title>
+		<script src="vue.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="submit"  value="点击我呀" v-on:click="xx" />
+			<h2 id="aa" ref="wo">谢谢大佬嗖嗖嗖</h2>
+			<hr />
+			<com1 ref="wq"></com1>
+		</div>
+		<script type="text/javascript">
+			
+			var com1={
+				template:'<h1>我是一个登陆的组件</h1>',
+				data(){
+					return{
+						msg: '我是登陆的组件'
+					}
+				},
+				methods:{
+					show:function(){
+						console.log('被调用了')
+					}
+				}
+			}
+			var vm=new Vue({
+				el:'#app',
+				data:{},
+				methods:{
+					xx:function(){
+						// alert(document.getElementById('aa').innerText)
+						console.log(this.$refs.wo.innerText);
+						// console.log(this.$refs.wq.show);
+						this.$refs.wq.show();
+					}
+				},
+				//创建组件
+				components:{
+					com1
+				}
+			})
+		</script>
+	</body>
+</html>
